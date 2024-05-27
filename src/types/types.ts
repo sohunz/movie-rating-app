@@ -22,4 +22,5 @@ export type TvShowTypes = {
     title: string;
     vote_average: number;
     vote_count: number;
+    first_air_date: string;
 };

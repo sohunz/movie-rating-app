@@ -1,8 +1,9 @@
+// @/components/pages/Home.tsx
 import { useQuery } from "@tanstack/react-query";
 import { fetchMovie, fetchTvShows } from "../../utils/query";
 import { MovieType, TvShowTypes } from "@/types/types";
 import MovieCard from "@/components/pages/MovieCard";
-import TvShowData from "@/components/pages/TvShowCard";
+import TvShowCard from "@/components/pages/TvShowCard";
 
 const Home = () => {
     const { data: movieData } = useQuery({
@@ -15,28 +16,27 @@ const Home = () => {
         queryFn: fetchTvShows,
     });
 
-    console.log(movieData);
     console.log(tvShowData);
 
     return (
-        <div>
-            <div className="border">
-                <p>Movie</p>
-                {movieData &&
-                    movieData.map((movie: MovieType) => (
-                        <div key={movie.id}>
-                            <MovieCard movie={movie} />
-                        </div>
-                    ))}
+        <div className="container mx-auto p-4">
+            <div className="mb-8">
+                <h2 className="text-3xl font-bold mb-4">Movies</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {movieData &&
+                        movieData.map((movie: MovieType) => (
+                            <MovieCard key={movie.id} movie={movie} />
+                        ))}
+                </div>
             </div>
-            <div className="border">
-                <p>TV Show</p>
-                {tvShowData &&
-                    tvShowData.map((tvshow: TvShowTypes) => (
-                        <div key={tvshow.id}>
-                            <TvShowData tvshow={tvshow} />
-                        </div>
-                    ))}
+            <div>
+                <h2 className="text-3xl font-bold mb-4">TV Shows</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {tvShowData &&
+                        tvShowData.map((tvshow: TvShowTypes) => (
+                            <TvShowCard key={tvshow.id} tvshow={tvshow} />
+                        ))}
+                </div>
             </div>
         </div>
     );
