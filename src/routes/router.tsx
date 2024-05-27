@@ -1,7 +1,9 @@
 import App from "@/App";
+import Auth from "@/pages/auth/Auth";
 import Home from "@/pages/home/Home";
 import Rated from "@/pages/rated/Rated";
 import { createBrowserRouter } from "react-router-dom";
+import AuthGuard from "../pages/auth/AuthGuard";
 
 export const router = createBrowserRouter([
     {
@@ -10,11 +12,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: (
+                    <AuthGuard>
+                        <Home />
+                    </AuthGuard>
+                ),
             },
             {
                 path: "rated",
-                element: <Rated />,
+                element: (
+                    <AuthGuard>
+                        <Rated />
+                    </AuthGuard>
+                ),
+            },
+            {
+                path: "auth",
+                element: <Auth />,
             },
         ],
     },

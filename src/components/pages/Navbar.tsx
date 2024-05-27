@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="border mb-5">
+        <div className="w-full border mb-5">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <Link
@@ -19,7 +19,12 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div>
-                    <p>Auth</p>
+                    <Link
+                        to="/auth"
+                        className="py-3 px-5 cursor-pointer hover:bg-gray-300"
+                    >
+                        Auth
+                    </Link>
                 </div>
             </div>
         </div>
