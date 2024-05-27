@@ -4,6 +4,7 @@ import Home from "@/pages/home/Home";
 import Rated from "@/pages/rated/Rated";
 import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../pages/auth/AuthGuard";
+import CardDetail from "@/components/pages/CardDetail";
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "/",
+                path: "/movie",
                 element: (
                     <AuthGuard>
                         <Home />
@@ -29,6 +30,14 @@ export const router = createBrowserRouter([
             {
                 path: "auth",
                 element: <Auth />,
+            },
+            {
+                path: "/movie/:id",
+                element: (
+                    <AuthGuard>
+                        <CardDetail />
+                    </AuthGuard>
+                ),
             },
         ],
     },

@@ -13,7 +13,7 @@ const Auth = () => {
         onSuccess: (data) => {
             if (data && data.guest_session_id) {
                 localStorage.setItem("guest_session_id", data.guest_session_id);
-                navigate("/");
+                navigate("/movie");
             } else {
                 console.error(
                     "guest_session_id is missing in the response data"
@@ -31,7 +31,7 @@ const Auth = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("guest_session_id");
-        navigate("/");
+        navigate("/movie");
     };
 
     return (

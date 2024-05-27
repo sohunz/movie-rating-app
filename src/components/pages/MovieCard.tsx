@@ -2,6 +2,7 @@
 import { MovieType } from "@/types/types";
 import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
+import { Link } from "react-router-dom";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -11,7 +12,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white">
+        <Link
+            to={`/movie/${movie.id}`}
+            className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white"
+        >
             <div className="relative">
                 <img className="w-full" src={posterUrl} alt={movie.title} />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
@@ -39,7 +43,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                     <div className="border px-3 py-1 rounded">Movie</div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

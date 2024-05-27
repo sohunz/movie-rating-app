@@ -6,7 +6,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <Link
-                        to="/"
+                        to="/movie"
                         className="py-3 px-5 cursor-pointer hover:bg-gray-300"
                     >
                         Home
