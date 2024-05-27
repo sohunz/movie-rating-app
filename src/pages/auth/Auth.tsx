@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { LogOut, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { mutationLogin } from "./mutationLogin";
@@ -38,7 +38,7 @@ const Auth = () => {
         <div className="w-full h-[85vh] flex items-center justify-center">
             {localStorage.getItem("guest_session_id") ? (
                 <Button className="border" onClick={handleLogout}>
-                    <Mail className="mr-2 h-4 w-4" /> Logout
+                    <LogOut className="mr-2 h-4 w-4" /> Logout
                 </Button>
             ) : (
                 <Button className="border" onClick={handleLogin}>
