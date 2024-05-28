@@ -42,6 +42,9 @@ const RatedShowCard = ({ tvshow }: TvShowCardProps) => {
                     <div className="border px-3 py-1 rounded">TV Show</div>
                 </div>
             </div>
+            <div>
+                <p>you rated: {tvshow.rating}</p>
+            </div>
         </Link>
     );
 };

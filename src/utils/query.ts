@@ -16,7 +16,7 @@ export const fetchMovie = async (): Promise<MovieType[]> => {
 
     return movieData;
 };
-export const fetchMovieDetail = async (id): Promise<MovieType[]> => {
+export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
     const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}`,
         {
@@ -47,10 +47,27 @@ export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
     return tvShowData;
 };
 
-// rate
+// rate movie
 export const rateMovie = async (id: number, rating: number) => {
     await axios.post(
         `https://api.themoviedb.org/3/movie/${id}/rating?guest_session_id=${localStorage.getItem(
+            "guest_session_id"
+        )}&api_key=4896561353cf8675bee859c032090d83`,
+        {
+            value: rating,
+        },
+        {
+            headers: {
+                accept: "application/json",
+                "Content-Type": "application/json;charset=utf-8",
+            },
+        }
+    );
+};
+// rate tv show
+export const rateTvShow = async (id: number, rating: number) => {
+    await axios.post(
+        `https://api.themoviedb.org/3/tv/${id}/rating?guest_session_id=${localStorage.getItem(
             "guest_session_id"
         )}&api_key=4896561353cf8675bee859c032090d83`,
         {
@@ -87,7 +104,7 @@ export const fetchRatedShow = async () => {
     const response = await axios.get(
         `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
             "guest_session_id"
-        )}/rated/tvshow`,
+        )}/rated/tv`,
         {
             params: {
                 language: "en-US",

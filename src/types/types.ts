@@ -29,4 +29,5 @@ export type TvShowTypes = {
     first_air_date: string;
     backdrop_path: string;
     origin_country: string;
+    rating: number;
 };
