@@ -13,8 +13,6 @@ const TvShowCardDetail = () => {
         queryFn: fetchTvShows,
     });
 
-    console.log(tvShowData);
-
     return (
         <div className=" bg-gray-100 flex items-center justify-center p-4">
             {tvShowData &&
