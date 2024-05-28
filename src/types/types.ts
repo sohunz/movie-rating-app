@@ -12,6 +12,7 @@ export type MovieType = {
     backdrop_path: string;
     origin_country: string;
     first_air_date: string;
+    rating: number;
 };
 
 export type TvShowTypes = {

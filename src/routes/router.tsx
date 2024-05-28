@@ -39,6 +39,16 @@ export const router = createBrowserRouter([
                         <Rated />
                     </AuthGuard>
                 ),
+                children: [
+                    {
+                        path: "movie",
+                        element: <Movie />,
+                    },
+                    {
+                        path: "show",
+                        element: <Show />,
+                    },
+                ],
             },
             {
                 path: "auth",

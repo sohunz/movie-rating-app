@@ -82,3 +82,20 @@ export const fetchRatedMovie = async () => {
     );
     return response.data.results;
 };
+
+export const fetchRatedShow = async () => {
+    const response = await axios.get(
+        `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
+            "guest_session_id"
+        )}/rated/tvshow`,
+        {
+            params: {
+                language: "en-US",
+                page: 1,
+                sort_by: "created_at.asc",
+                api_key: "4896561353cf8675bee859c032090d83",
+            },
+        }
+    );
+    return response.data.results;
+};

@@ -11,7 +11,7 @@ type MovieCardProps = {
     movie: MovieType;
 };
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const RatedMovieCard = ({ movie }: MovieCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const [rating, setRating] = useState<number>(0);
 
@@ -57,27 +57,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                     <div className="border px-3 py-1 rounded">Movie</div>
                 </div>
             </div>
-
-            <div className="flex flex-row items-center gap-2 px-5 my-2">
-                <input
-                    type="number"
-                    className="border w-[60px]"
-                    min={0}
-                    max={10}
-                    step={0.5}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setRating(Number(e.target.value))
-                    }
-                />
-                <button
-                    className="border bg-blue-500 text-white rounded-md px-2 py-1"
-                    onClick={() => rateMovieData({ id: movie?.id, rating })}
-                >
-                    Rate
-                </button>
+            <div>
+                <p>You Rated: {movie?.rating}</p>
             </div>
         </div>
     );
 };
 
-export default MovieCard;
+export default RatedMovieCard;
