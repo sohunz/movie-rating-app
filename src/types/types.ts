@@ -9,6 +9,9 @@ export type MovieType = {
     title: string;
     vote_average: number;
     vote_count: number;
+    backdrop_path: string;
+    origin_country: string;
+    first_air_date: string;
 };
 
 export type TvShowTypes = {
@@ -23,4 +26,6 @@ export type TvShowTypes = {
     vote_average: number;
     vote_count: number;
     first_air_date: string;
+    backdrop_path: string;
+    origin_country: string;
 };

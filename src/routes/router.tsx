@@ -1,10 +1,13 @@
 import App from "@/App";
 import Auth from "@/pages/auth/Auth";
-import Home from "@/pages/home/Home";
-import Rated from "@/pages/rated/Rated";
+import Home from "@/pages/home/HomePage";
+import Rated from "@/pages/rated/RatedPage";
 import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../pages/auth/AuthGuard";
-import CardDetail from "@/components/pages/CardDetail";
+import MovieCardDetail from "@/components/cardDetail/MovieCardDetail";
+import TvShowCardDetail from "@/components/cardDetail/TvShowCardDetail";
+import Movie from "../pages/home/movie/MoviePage";
+import Show from "../pages/home/show/ShowPage";
 
 export const router = createBrowserRouter([
     {
@@ -12,12 +15,22 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "/movie",
+                path: "/",
                 element: (
                     <AuthGuard>
                         <Home />
                     </AuthGuard>
                 ),
+                children: [
+                    {
+                        path: "movie",
+                        element: <Movie />,
+                    },
+                    {
+                        path: "show",
+                        element: <Show />,
+                    },
+                ],
             },
             {
                 path: "rated",
@@ -35,7 +48,15 @@ export const router = createBrowserRouter([
                 path: "/movie/:id",
                 element: (
                     <AuthGuard>
-                        <CardDetail />
+                        <MovieCardDetail />
+                    </AuthGuard>
+                ),
+            },
+            {
+                path: "/show/:id",
+                element: (
+                    <AuthGuard>
+                        <TvShowCardDetail />
                     </AuthGuard>
                 ),
             },
