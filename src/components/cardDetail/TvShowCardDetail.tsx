@@ -3,19 +3,22 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { TvShowTypes } from "@/types/types";
 import { convertYear } from "@/utils/yearConvertor";
+import { getCountryName } from "@/utils/countryConvert";
 
 const TvShowCardDetail = () => {
     const { id } = useParams();
 
-    const { data: movieData } = useQuery({
+    const { data: tvShowData } = useQuery({
         queryKey: ["show"],
         queryFn: fetchTvShows,
     });
 
+    console.log(tvShowData);
+
     return (
         <div className=" bg-gray-100 flex items-center justify-center p-4">
-            {movieData &&
-                movieData
+            {tvShowData &&
+                tvShowData
                     .filter((show) => show.id.toString() === id)
                     .map((show: TvShowTypes) => (
                         <div
@@ -39,7 +42,7 @@ const TvShowCardDetail = () => {
                                     <ul className="text-gray-700 text-sm mb-4">
                                         <li>
                                             <strong>Year:</strong>{" "}
-                                            {convertYear(show.release_date)}
+                                            {convertYear(show.first_air_date)}
                                         </li>
                                         <li>
                                             <strong>Vote Average:</strong>{" "}
@@ -59,7 +62,9 @@ const TvShowCardDetail = () => {
                                         </li>
                                         <li>
                                             <strong>Origin Country:</strong>{" "}
-                                            {show.origin_country}
+                                            {getCountryName(
+                                                show.origin_country
+                                            )}
                                         </li>
                                     </ul>
                                 </div>

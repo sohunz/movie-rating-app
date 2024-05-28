@@ -1,6 +1,7 @@
 import { TvShowTypes } from "@/types/types";
 import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
+import { Link } from "react-router-dom";
 
 type TvShowCardProps = {
     tvshow: TvShowTypes;
@@ -10,7 +11,10 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${tvshow.poster_path}`;
 
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white">
+        <Link
+            to={`/show/${tvshow.id}`}
+            className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white"
+        >
             <div className="relative">
                 <img className="w-full" src={posterUrl} alt={tvshow.name} />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
@@ -38,7 +42,7 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
                     <div className="border px-3 py-1 rounded">TV Show</div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

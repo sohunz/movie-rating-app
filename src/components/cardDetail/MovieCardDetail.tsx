@@ -58,8 +58,7 @@ const MovieCardDetail = () => {
                                             {movie.original_language}
                                         </li>
                                         <li>
-                                            <strong>Origin Country:</strong>{" "}
-                                            {movie.origin_country}
+                                            <strong>Origin Country:</strong> USA
                                         </li>
                                     </ul>
                                 </div>
