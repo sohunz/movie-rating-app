@@ -1,19 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
-import { fetchRatedMovie } from "@/utils/query";
-import { useQuery } from "@tanstack/react-query";
 import MoviePage from "../rated/movie/MoviePage";
 import ShowPage from "../rated/show/ShowPage";
 import { useState } from "react";
 
 const RatedPage = () => {
     const [activeTab, setActiveTab] = useState("movie");
-
-    const { data: ratedMovieData } = useQuery({
-        queryKey: ["ratedMovie"],
-        queryFn: fetchRatedMovie,
-    });
-
     return (
         <div className="container mx-auto p-4">
             <Tabs defaultValue="movie" className="w-full">
