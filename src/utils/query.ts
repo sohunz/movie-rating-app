@@ -2,56 +2,87 @@ import { MovieType, TvShowTypes } from "@/types/types";
 import axios from "axios";
 
 export const fetchMovie = async (): Promise<MovieType[]> => {
-    const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
-            },
-        }
-    );
+    try {
+        const response = await axios.get(
+            "https://api.themoviedb.org/3/movie/popular",
+            {
+                headers: {
+                    Authorization: `Bearer ${
+                        import.meta.env.VITE_Authorization
+                    }`,
+                },
+            }
+        );
 
-    const movieData: MovieType[] = response.data.results;
+        const movieData: MovieType[] = response.data.results;
 
-    return movieData;
+        return movieData;
+    } catch (error) {
+        console.error("Error fetching rated tv show:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
 export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
-    const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}`,
-        {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
-            },
-        }
-    );
+    try {
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/movie/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${
+                        import.meta.env.VITE_Authorization
+                    }`,
+                },
+            }
+        );
 
-    const movieDetailData: MovieType[] = response.data;
-    return movieDetailData;
+        const movieDetailData: MovieType[] = response.data;
+        return movieDetailData;
+    } catch (error) {
+        console.error("Error fetching rated tv show:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
 export const fetchShowDetail = async (id: number): Promise<MovieType[]> => {
-    const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, {
-        headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
-        },
-    });
+    try {
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/tv/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${
+                        import.meta.env.VITE_Authorization
+                    }`,
+                },
+            }
+        );
 
-    const showDetailData: MovieType[] = response.data;
-    return showDetailData;
+        const showDetailData: MovieType[] = response.data;
+        return showDetailData;
+    } catch (error) {
+        console.error("Error fetching rated tv show:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
 
 export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
-    const response = await axios.get(
-        "https://api.themoviedb.org/3/tv/popular",
-        {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
-            },
-        }
-    );
+    try {
+        const response = await axios.get(
+            "https://api.themoviedb.org/3/tv/popular",
+            {
+                headers: {
+                    Authorization: `Bearer ${
+                        import.meta.env.VITE_Authorization
+                    }`,
+                },
+            }
+        );
 
-    const tvShowData: TvShowTypes[] = response.data.results;
+        const tvShowData: TvShowTypes[] = response.data.results;
 
-    return tvShowData;
+        return tvShowData;
+    } catch (error) {
+        console.error("Error fetching rated tv show:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
 
 // rate movie

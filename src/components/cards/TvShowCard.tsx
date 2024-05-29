@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateTvShow } from "@/utils/query";
+import toast from "react-hot-toast";
 
 type TvShowCardProps = {
     tvshow: TvShowTypes;
@@ -19,6 +20,9 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
         mutationKey: ["rateTvShow"],
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateTvShow(id, rating),
+        onSuccess: () => {
+            toast.success("You have rated successfully.");
+        },
     });
 
     return (

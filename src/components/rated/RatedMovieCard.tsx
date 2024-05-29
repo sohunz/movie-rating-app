@@ -3,9 +3,6 @@ import { MovieType } from "@/types/types";
 import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import { useMutation } from "@tanstack/react-query";
-// import { rateMovie } from "@/utils/query";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -13,13 +10,6 @@ type MovieCardProps = {
 
 const RatedMovieCard = ({ movie }: MovieCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-    // const [rating, setRating] = useState<number>(0);
-
-    // const { mutate: rateMovieData } = useMutation({
-    //     mutationKey: ["rateMovie"],
-    //     mutationFn: ({ id, rating }: { id: number; rating: number }) =>
-    //         rateMovie(id, rating),
-    // });
 
     return (
         <div className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white">
