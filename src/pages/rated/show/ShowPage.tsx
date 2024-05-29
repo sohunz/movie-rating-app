@@ -1,14 +1,30 @@
 import { TvShowTypes } from "@/types/types";
 import RatedShowCard from "@/components/rated/RatedShowCard";
 import { useRatedShow } from "@/hooks/useFetch";
+import Loading from "@/components/loader/Loading";
 
 const ShowPage = () => {
-    const ratedTvShowData = useRatedShow();
+    const { data, isError, isLoading } = useRatedShow();
+    if (isLoading) {
+        return (
+            <div className="w-full h-[85vh] flex items-center justify-center">
+                <Loading />
+            </div>
+        );
+    }
+
+    if (isError) {
+        return (
+            <div className="w-full h-[85vh] flex items-center justify-center">
+                <p>Failed to load movies.</p>
+            </div>
+        );
+    }
     return (
         <div className="mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {ratedTvShowData &&
-                    ratedTvShowData.map((tvshow: TvShowTypes) => (
+                {data &&
+                    data.map((tvshow: TvShowTypes) => (
                         <RatedShowCard key={tvshow.id} tvshow={tvshow} />
                     ))}
             </div>

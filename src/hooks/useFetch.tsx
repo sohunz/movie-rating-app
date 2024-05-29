@@ -37,11 +37,11 @@ export const useRatedMovie = () => {
 
 // fetch rated tv show
 export const useRatedShow = () => {
-    const { data: ratedShow } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["RatedShow"],
         queryFn: fetchRatedShow,
     });
-    return ratedShow;
+    return { data, isError, isLoading };
 };
 
 // fetch movie detail
