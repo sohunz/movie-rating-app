@@ -7,6 +7,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
     const handleLogout = () => {
@@ -15,7 +16,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="w-[90vw] border mb-5">
+        <div className="w-[90vw] mx-auto border mb-5">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <Link
@@ -35,16 +36,22 @@ const Navbar = () => {
                     {localStorage.getItem("guest_session_id") ? (
                         <DropdownMenu>
                             <DropdownMenuTrigger>
-                                {localStorage.getItem("guest_session_id")
-                                    ? "Guest"
-                                    : "Login"}
+                                {localStorage.getItem("guest_session_id") ? (
+                                    <FaUserCircle size={25} />
+                                ) : (
+                                    "Login"
+                                )}
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
                                 <DropdownMenuLabel>
                                     Account Setting
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem onClick={handleLogout}>
+
+                                <DropdownMenuItem
+                                    className="cursor-pointer"
+                                    onClick={handleLogout}
+                                >
                                     Logout
                                 </DropdownMenuItem>
                             </DropdownMenuContent>

@@ -10,29 +10,29 @@ import { useQuery } from "@tanstack/react-query";
 
 // fetch all movie
 export const useMovies = () => {
-    const { data: fetchMovieData } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["Movies"],
         queryFn: fetchMovie,
     });
-    return fetchMovieData;
+    return { data, isError, isLoading };
 };
 
 // fetch all tv show
 export const useTvShows = () => {
-    const { data: tvShowData } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["TvShows"],
         queryFn: fetchTvShows,
     });
-    return tvShowData;
+    return { data, isError, isLoading };
 };
 
 // fetch rated movie
 export const useRatedMovie = () => {
-    const { data: ratedMovie } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["RatedMovie"],
         queryFn: fetchRatedMovie,
     });
-    return ratedMovie;
+    return { data, isError, isLoading };
 };
 
 // fetch rated tv show
