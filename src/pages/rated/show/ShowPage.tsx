@@ -20,6 +20,15 @@ const ShowPage = () => {
             </div>
         );
     }
+
+    if (!data || data.length === 0) {
+        return (
+            <div className="w-full h-[85vh] flex items-center justify-center">
+                <p>No TV Show have been rated yet.</p>
+            </div>
+        );
+    }
+
     return (
         <div className="mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

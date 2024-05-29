@@ -92,35 +92,45 @@ export const rateTvShow = async (id: number, rating: number) => {
 
 // fetch rate movie
 export const fetchRatedMovie = async () => {
-    const response = await axios.get(
-        `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
-            "guest_session_id"
-        )}/rated/movies`,
-        {
-            params: {
-                language: "en-US",
-                page: 1,
-                sort_by: "created_at.asc",
-                api_key: import.meta.env.VITE_API_KEY,
-            },
-        }
-    );
-    return response.data.results;
+    try {
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
+                "guest_session_id"
+            )}/rated/movies`,
+            {
+                params: {
+                    language: "en-US",
+                    page: 1,
+                    sort_by: "created_at.asc",
+                    api_key: import.meta.env.VITE_API_KEY,
+                },
+            }
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error("Error fetching rated movies:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
 
 export const fetchRatedShow = async () => {
-    const response = await axios.get(
-        `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
-            "guest_session_id"
-        )}/rated/tv`,
-        {
-            params: {
-                language: "en-US",
-                page: 1,
-                sort_by: "created_at.asc",
-                api_key: import.meta.env.VITE_API_KEY,
-            },
-        }
-    );
-    return response.data.results;
+    try {
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
+                "guest_session_id"
+            )}/rated/tv`,
+            {
+                params: {
+                    language: "en-US",
+                    page: 1,
+                    sort_by: "created_at.asc",
+                    api_key: import.meta.env.VITE_API_KEY,
+                },
+            }
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error("Error fetching rated tv show:", error);
+        return []; // Return an empty array if an error occurs
+    }
 };
