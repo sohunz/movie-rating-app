@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateMovie } from "@/utils/query";
+import toast from "react-hot-toast";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -19,6 +20,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         mutationKey: ["rateMovie"],
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateMovie(id, rating),
+        onSuccess: () => {
+            toast.success("You have rated successfully.");
+        },
     });
 
     return (
