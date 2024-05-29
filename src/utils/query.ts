@@ -6,8 +6,7 @@ export const fetchMovie = async (): Promise<MovieType[]> => {
         "https://api.themoviedb.org/3/movie/popular",
         {
             headers: {
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
+                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
             },
         }
     );
@@ -21,8 +20,7 @@ export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
         `https://api.themoviedb.org/3/movie/${id}`,
         {
             headers: {
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
+                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
             },
         }
     );
@@ -33,8 +31,7 @@ export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
 export const fetchShowDetail = async (id: number): Promise<MovieType[]> => {
     const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, {
         headers: {
-            Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
+            Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
         },
     });
 
@@ -47,8 +44,7 @@ export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
         "https://api.themoviedb.org/3/tv/popular",
         {
             headers: {
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
+                Authorization: `Bearer ${import.meta.env.VITE_Authorization}`,
             },
         }
     );
