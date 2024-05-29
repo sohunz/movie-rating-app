@@ -26,7 +26,7 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
     });
 
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white">
+        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg border">
             <Link className="relative" to={`/show/${tvshow?.id}`}>
                 <img className="w-full" src={posterUrl} alt={tvshow?.name} />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
@@ -67,7 +67,7 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
                     }
                 />
                 <button
-                    className="border bg-blue-500 text-white rounded-md px-2 py-1"
+                    className="border rounded-md px-2 py-1"
                     onClick={() => rateTvShowData({ id: tvshow?.id, rating })}
                 >
                     Rate

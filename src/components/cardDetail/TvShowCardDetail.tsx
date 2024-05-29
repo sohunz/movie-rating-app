@@ -11,9 +11,9 @@ const TvShowCardDetail = () => {
     const production = show?.production_companies;
 
     return (
-        <div className=" bg-gray-100 flex items-center justify-center p-4">
-            <div className=" bg-gray-100 flex items-center justify-center p-4">
-                <div className="max-w-5xl rounded overflow-hidden shadow-lg bg-white flex flex-col md:flex-row">
+        <div className=" flex items-center justify-center p-4">
+            <div className=" flex items-center justify-center p-4">
+                <div className="max-w-5xl rounded overflow-hidden shadow-lg  flex flex-col md:flex-row">
                     <img
                         className="w-full md:w-1/3 object-cover"
                         src={`https://image.tmdb.org/t/p/w500${show?.backdrop_path}`}

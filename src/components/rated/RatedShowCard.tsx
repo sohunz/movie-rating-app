@@ -13,7 +13,7 @@ const RatedShowCard = ({ tvshow }: TvShowCardProps) => {
     return (
         <Link
             to={`/show/${tvshow.id}`}
-            className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white"
+            className="max-w-xs rounded-xl overflow-hidden shadow-lg border"
         >
             <div className="relative">
                 <img className="w-full" src={posterUrl} alt={tvshow.name} />

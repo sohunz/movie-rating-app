@@ -26,7 +26,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     });
 
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg bg-white">
+        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg border">
             <Link to={`/movie/${movie?.id}`}>
                 <div className="relative">
                     <img
@@ -74,7 +74,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                     }
                 />
                 <button
-                    className="border bg-blue-500 text-white rounded-md px-2 py-1"
+                    className="border rounded-md px-2 py-1"
                     onClick={() => rateMovieData({ id: movie?.id, rating })}
                 >
                     Rate
