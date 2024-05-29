@@ -1,3 +1,4 @@
+import { useMovieDetail } from "@/hooks/useFetch";
 import { fetchMovieDetail } from "@/utils/query";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -5,10 +6,7 @@ import { useParams } from "react-router-dom";
 const MovieCardDetail = () => {
     const { id } = useParams();
 
-    const { data: movie } = useQuery({
-        queryKey: ["movieDetail"],
-        queryFn: () => fetchMovieDetail(id),
-    });
+    const movie = useMovieDetail(Number(id));
 
     const genre = movie?.genres;
 

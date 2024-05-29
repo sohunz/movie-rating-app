@@ -1,13 +1,10 @@
 import { MovieType } from "@/types/types";
-import { fetchMovie } from "@/utils/query";
-import { useQuery } from "@tanstack/react-query";
 import MovieCard from "../../../components/cards/MovieCard";
+import { useMovies } from "@/hooks/useFetch";
 
 const MoviePage = () => {
-    const { data: movieData } = useQuery({
-        queryKey: ["movies"],
-        queryFn: fetchMovie,
-    });
+    const movieData = useMovies();
+
     return (
         <div className="mb-8 mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

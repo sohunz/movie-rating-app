@@ -7,7 +7,7 @@ export const fetchMovie = async (): Promise<MovieType[]> => {
         {
             headers: {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ODk2NTYxMzUzY2Y4Njc1YmVlODU5YzAzMjA5MGQ4MyIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8hxuvIf88Uwf9bdxx8zoAK3ai0e7wv5jyG6nWie4EJg",
+                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
             },
         }
     );
@@ -22,13 +22,24 @@ export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
         {
             headers: {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ODk2NTYxMzUzY2Y4Njc1YmVlODU5YzAzMjA5MGQ4MyIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8hxuvIf88Uwf9bdxx8zoAK3ai0e7wv5jyG6nWie4EJg",
+                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
             },
         }
     );
 
     const movieDetailData: MovieType[] = response.data;
     return movieDetailData;
+};
+export const fetchShowDetail = async (id: number): Promise<MovieType[]> => {
+    const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, {
+        headers: {
+            Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
+        },
+    });
+
+    const showDetailData: MovieType[] = response.data;
+    return showDetailData;
 };
 
 export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
@@ -37,7 +48,7 @@ export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
         {
             headers: {
                 Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ODk2NTYxMzUzY2Y4Njc1YmVlODU5YzAzMjA5MGQ4MyIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8hxuvIf88Uwf9bdxx8zoAK3ai0e7wv5jyG6nWie4EJg",
+                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjk2OGY0YjQwODU0YmU2MGYyY2UyNDJjMDAwMzAwNSIsInN1YiI6IjY2NTNlYjllNjZhM2M1ZjRiNzRjYjIwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EP_BJH-CBxcf8l65lRqX2TV2o4CLA9TIUm02r9XfiyE",
             },
         }
     );
@@ -48,11 +59,12 @@ export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
 };
 
 // rate movie
+
 export const rateMovie = async (id: number, rating: number) => {
     await axios.post(
-        `https://api.themoviedb.org/3/movie/${id}/rating?guest_session_id=${localStorage.getItem(
-            "guest_session_id"
-        )}&api_key=4896561353cf8675bee859c032090d83`,
+        `https://api.themoviedb.org/3/movie/${id}/rating?api_key=${
+            import.meta.env.VITE_API_KEY
+        }&guest_session_id=${localStorage.getItem("guest_session_id")}`,
         {
             value: rating,
         },
@@ -69,7 +81,7 @@ export const rateTvShow = async (id: number, rating: number) => {
     await axios.post(
         `https://api.themoviedb.org/3/tv/${id}/rating?guest_session_id=${localStorage.getItem(
             "guest_session_id"
-        )}&api_key=4896561353cf8675bee859c032090d83`,
+        )}&api_key=${import.meta.env.VITE_API_KEY}`,
         {
             value: rating,
         },
@@ -93,7 +105,7 @@ export const fetchRatedMovie = async () => {
                 language: "en-US",
                 page: 1,
                 sort_by: "created_at.asc",
-                api_key: "4896561353cf8675bee859c032090d83",
+                api_key: import.meta.env.VITE_API_KEY,
             },
         }
     );
@@ -110,7 +122,7 @@ export const fetchRatedShow = async () => {
                 language: "en-US",
                 page: 1,
                 sort_by: "created_at.asc",
-                api_key: "4896561353cf8675bee859c032090d83",
+                api_key: import.meta.env.VITE_API_KEY,
             },
         }
     );

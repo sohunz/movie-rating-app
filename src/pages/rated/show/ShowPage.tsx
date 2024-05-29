@@ -1,13 +1,9 @@
 import { TvShowTypes } from "@/types/types";
-import { fetchRatedShow } from "@/utils/query";
-import { useQuery } from "@tanstack/react-query";
 import RatedShowCard from "@/components/rated/RatedShowCard";
+import { useRatedShow } from "@/hooks/useFetch";
 
 const ShowPage = () => {
-    const { data: ratedTvShowData } = useQuery({
-        queryKey: ["ratedShow"],
-        queryFn: fetchRatedShow,
-    });
+    const ratedTvShowData = useRatedShow();
     return (
         <div className="mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
