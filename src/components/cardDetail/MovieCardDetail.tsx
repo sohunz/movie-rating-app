@@ -13,7 +13,7 @@ const MovieCardDetail = () => {
 
     const production = movie?.production_companies;
 
-    console.log(movie);
+    const voteAverage = movie?.vote_average.toFixed(1);
 
     return (
         <div className="  flex items-center justify-center p-4">
@@ -35,8 +35,7 @@ const MovieCardDetail = () => {
                                 {movie?.release_date}
                             </li>
                             <li>
-                                <strong>Vote Average:</strong>{" "}
-                                {movie?.vote_average}
+                                <strong>Vote Average:</strong> {voteAverage}
                             </li>
                             <li>
                                 <strong>Total Votes:</strong>{" "}

@@ -49,14 +49,14 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
                                 {convertYear(tvshow?.first_air_date)}
                             </span>
                             <BsDot />
-                            <span className="block">120 mn</span>
+                            <span className="block">75mn</span>
                         </p>
                     </div>
                     <div className="border px-3 py-1 rounded">TV Show</div>
                 </div>
             </div>
 
-            <div className="border flex items-center justify-between">
+            <div className=" flex items-center justify-between">
                 <div>
                     <div className="flex flex-row items-center gap-2 px-5 my-2">
                         <input

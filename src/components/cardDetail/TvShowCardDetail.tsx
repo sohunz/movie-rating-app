@@ -13,7 +13,7 @@ const TvShowCardDetail = () => {
 
     const production = show?.production_companies;
 
-    console.log(show);
+    const voteAverage = show?.vote_average.toFixed(1);
 
     return (
         <div className=" flex items-center justify-center p-4">
@@ -38,8 +38,7 @@ const TvShowCardDetail = () => {
                                     {show?.first_air_date}
                                 </li>
                                 <li>
-                                    <strong>Vote Average:</strong>{" "}
-                                    {show?.vote_average}
+                                    <strong>Vote Average:</strong> {voteAverage}
                                 </li>
                                 <li>
                                     <strong>Total Votes:</strong>{" "}
