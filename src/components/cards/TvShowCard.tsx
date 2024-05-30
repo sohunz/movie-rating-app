@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateTvShow } from "@/utils/query";
 import toast from "react-hot-toast";
+import { Badge } from "@/components/ui/badge";
 
 type TvShowCardProps = {
     tvshow: TvShowTypes;
@@ -55,23 +56,34 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
                 </div>
             </div>
 
-            <div className="flex flex-row items-center gap-2 px-5 my-2">
-                <input
-                    type="number"
-                    className="border w-[60px]"
-                    min={0}
-                    max={10}
-                    step={0.5}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setRating(Number(e.target.value))
-                    }
-                />
-                <button
-                    className="border rounded-md px-2 py-1"
-                    onClick={() => rateTvShowData({ id: tvshow?.id, rating })}
-                >
-                    Rate
-                </button>
+            <div className="border flex items-center justify-between">
+                <div>
+                    <div className="flex flex-row items-center gap-2 px-5 my-2">
+                        <input
+                            type="number"
+                            className="border w-[60px]"
+                            min={0}
+                            max={10}
+                            step={0.5}
+                            onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                            ) => setRating(Number(e.target.value))}
+                        />
+                        <button
+                            className="border rounded-md px-2 py-1"
+                            onClick={() =>
+                                rateTvShowData({ id: tvshow?.id, rating })
+                            }
+                        >
+                            Rate
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <Badge variant="outline">
+                        {tvshow.vote_average.toFixed(1)}
+                    </Badge>
+                </div>
             </div>
         </div>
     );

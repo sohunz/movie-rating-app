@@ -1,7 +1,8 @@
 import { useMovieDetail } from "@/hooks/useFetch";
-import { fetchMovieDetail } from "@/utils/query";
-import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { getCountryName } from "@/utils/countryConvert";
+import { numberConvert } from "@/utils/numberConvert";
+import { getCountryLanguages } from "@/utils/languageConvert";
 
 const MovieCardDetail = () => {
     const { id } = useParams();
@@ -11,6 +12,8 @@ const MovieCardDetail = () => {
     const genre = movie?.genres;
 
     const production = movie?.production_companies;
+
+    console.log(movie);
 
     return (
         <div className="  flex items-center justify-center p-4">
@@ -25,47 +28,51 @@ const MovieCardDetail = () => {
                             {movie?.title}
                         </div>
                         <hr />
-                        <p className="text-gray-700 text-base mb-4 mt-5">
-                            {movie?.overview}
-                        </p>
-                        <ul className="text-gray-700 text-sm mb-4">
+                        <p className="text-base mb-4 mt-5">{movie?.overview}</p>
+                        <ul className=" text-sm mb-4">
                             <li>
-                                <strong>Year: </strong> {movie?.release_date}
+                                <strong>Release Date: </strong>{" "}
+                                {movie?.release_date}
                             </li>
                             <li>
                                 <strong>Vote Average:</strong>{" "}
-                                {movie?.vote_average}
+                                {(movie?.vote_average).toFixed(1)}
                             </li>
                             <li>
-                                <strong>Vote Count:</strong> {movie?.vote_count}
+                                <strong>Total Votes:</strong>{" "}
+                                {numberConvert(movie?.vote_count)}
                             </li>
                             <li>
-                                <strong>Popularity:</strong> 780
+                                <strong>Popularity:</strong>{" "}
+                                {numberConvert(movie?.popularity)}
                             </li>
                             <li>
-                                <strong>Original Language:</strong> English
+                                <strong>Languages:</strong>{" "}
+                                {getCountryLanguages(movie?.original_language)}
                             </li>
                             <li>
-                                <strong>Origin Country: </strong>{" "}
-                                {movie?.origin_country[0]}
+                                <strong>Country: </strong>{" "}
+                                {getCountryName(movie?.origin_country[0])}
                             </li>
+
                             <li>
-                                <p>Status : {movie?.status}</p>
-                            </li>
-                            <li>
-                                <p>Runtime : {movie?.runtime}</p>
+                                <strong>Runtime: </strong> {movie?.runtime}mn
                             </li>
                             <li>
                                 <p>
-                                    Genre :{" "}
-                                    {genre?.map((i) => (
-                                        <span key={i.id}>{i.name}</span>
+                                    <strong>Genres: </strong>
+                                    {genre?.map((i, index) => (
+                                        <span key={i.id}>
+                                            {i.name}
+                                            {index < production.length + 1 &&
+                                                ", "}
+                                        </span>
                                     ))}
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Genre :{" "}
+                                    <strong>Productions: </strong>
                                     {production?.map((i) => (
                                         <span key={i.id}>{i.name}</span>
                                     ))}

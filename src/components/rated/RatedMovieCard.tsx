@@ -3,6 +3,7 @@ import { MovieType } from "@/types/types";
 import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -44,7 +45,9 @@ const RatedMovieCard = ({ movie }: MovieCardProps) => {
                 </div>
             </div>
             <div>
-                <p>You Rated: {movie?.rating}</p>
+                <Badge variant="outline">
+                    You rated: {movie.rating.toFixed(1)}
+                </Badge>
             </div>
         </div>
     );

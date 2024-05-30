@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateMovie } from "@/utils/query";
 import toast from "react-hot-toast";
+import { Badge } from "@/components/ui/badge";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -30,7 +31,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             <Link to={`/movie/${movie?.id}`}>
                 <div className="relative">
                     <img
-                        className="w-full"
+                        className="w-full h-[30%]"
                         src={posterUrl}
                         alt={movie?.title}
                     />
@@ -55,30 +56,41 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                                 {convertYear(movie?.release_date)}
                             </span>
                             <BsDot />
-                            <span className="block">120 mn</span>
+                            <span className="block">90mn</span>
                         </p>
                     </div>
                     <div className="border px-3 py-1 rounded">Movie</div>
                 </div>
             </div>
 
-            <div className="flex flex-row items-center gap-2 px-5 my-2">
-                <input
-                    type="number"
-                    className="border w-[60px]"
-                    min={0}
-                    max={10}
-                    step={0.5}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setRating(Number(e.target.value))
-                    }
-                />
-                <button
-                    className="border rounded-md px-2 py-1"
-                    onClick={() => rateMovieData({ id: movie?.id, rating })}
-                >
-                    Rate
-                </button>
+            <div className="border flex items-center justify-between">
+                <div>
+                    <div className="flex flex-row items-center gap-2 px-5 my-2">
+                        <input
+                            type="number"
+                            className="border w-[60px]"
+                            min={0}
+                            max={10}
+                            step={0.5}
+                            onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                            ) => setRating(Number(e.target.value))}
+                        />
+                        <button
+                            className="border rounded-md px-2 py-1"
+                            onClick={() =>
+                                rateMovieData({ id: movie?.id, rating })
+                            }
+                        >
+                            Rate
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <Badge variant="outline">
+                        {movie.vote_average.toFixed(1)}
+                    </Badge>
+                </div>
             </div>
         </div>
     );

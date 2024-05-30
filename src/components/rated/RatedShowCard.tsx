@@ -2,6 +2,7 @@ import { TvShowTypes } from "@/types/types";
 import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 type TvShowCardProps = {
     tvshow: TvShowTypes;
@@ -43,7 +44,9 @@ const RatedShowCard = ({ tvshow }: TvShowCardProps) => {
                 </div>
             </div>
             <div>
-                <p>you rated: {tvshow.rating}</p>
+                <Badge variant="outline">
+                    You rated: {tvshow.rating.toFixed(1)}
+                </Badge>
             </div>
         </Link>
     );

@@ -6,6 +6,8 @@ import CardSketon from "@/components/skeleton/CardSketon";
 const ShowPage = () => {
     const { data, isError, isLoading } = useTvShows();
 
+    console.log(data);
+
     if (isLoading) {
         return (
             <div className="mb-8 mt-10">

@@ -26,14 +26,8 @@ const CardSketon = () => {
             </div>
 
             <div className="flex flex-row items-center gap-2 px-5 my-2">
-                <input
-                    type="number"
-                    className="border w-[60px]"
-                    min={0}
-                    max={10}
-                    step={0.5}
-                />
-                <button className="border rounded-md px-2 py-1"></button>
+                <Skeleton className="h-4 w-[200px]" />
+                <Skeleton className="h-4 w-[200px]" />
             </div>
         </div>
     );

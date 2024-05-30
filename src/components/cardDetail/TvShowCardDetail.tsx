@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useShowDetail } from "@/hooks/useFetch";
+import { getCountryName } from "@/utils/countryConvert";
+import { getCountryLanguages } from "@/utils/languageConvert";
+import { numberConvert } from "@/utils/numberConvert";
 
 const TvShowCardDetail = () => {
     const { id } = useParams();
@@ -9,6 +12,8 @@ const TvShowCardDetail = () => {
     const genre = show?.genres;
 
     const production = show?.production_companies;
+
+    console.log(show);
 
     return (
         <div className=" flex items-center justify-center p-4">
@@ -27,45 +32,54 @@ const TvShowCardDetail = () => {
                             <p className="text-gray-700 text-base mb-4 mt-5">
                                 {show?.overview}
                             </p>
-                            <ul className="text-gray-700 text-sm mb-4">
+                            <ul className=" text-sm mb-4">
                                 <li>
-                                    <strong>Year: </strong> {show?.release_date}
+                                    <strong>Release Date: </strong>{" "}
+                                    {show?.first_air_date}
                                 </li>
                                 <li>
                                     <strong>Vote Average:</strong>{" "}
                                     {show?.vote_average}
                                 </li>
                                 <li>
-                                    <strong>Vote Count:</strong>{" "}
-                                    {show?.vote_count}
+                                    <strong>Total Votes:</strong>{" "}
+                                    {numberConvert(show?.vote_count)}
                                 </li>
                                 <li>
-                                    <strong>Popularity:</strong> 780
+                                    <strong>Popularity:</strong>{" "}
+                                    {numberConvert(show?.popularity)}
                                 </li>
                                 <li>
-                                    <strong>Original Language:</strong> English
+                                    <strong>Languages:</strong>{" "}
+                                    {getCountryLanguages(
+                                        show?.original_language
+                                    )}
                                 </li>
                                 <li>
-                                    <strong>Origin Country: </strong>{" "}
-                                    {show?.origin_country[0]}
+                                    <strong>Country: </strong>{" "}
+                                    {getCountryName(show?.origin_country[0])}
                                 </li>
+
                                 <li>
-                                    <p>Status : yoo</p>
-                                </li>
-                                <li>
-                                    <p>Runtime : 12</p>
+                                    <strong>Runtime: </strong> {show?.runtime}
+                                    mn
                                 </li>
                                 <li>
                                     <p>
-                                        Genre :{" "}
-                                        {genre?.map((i) => (
-                                            <span key={i.id}>{i.name}</span>
+                                        <strong>Genres: </strong>
+                                        {genre?.map((i, index) => (
+                                            <span key={i.id}>
+                                                {i.name}
+                                                {index <
+                                                    production.length + 1 &&
+                                                    ", "}
+                                            </span>
                                         ))}
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        Genre :{" "}
+                                        <strong>Productions: </strong>
                                         {production?.map((i) => (
                                             <span key={i.id}>{i.name}</span>
                                         ))}
