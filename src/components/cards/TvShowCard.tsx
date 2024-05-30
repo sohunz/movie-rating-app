@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateTvShow } from "@/utils/query";
-import toast from "react-hot-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
 
 type TvShowCardProps = {
@@ -14,7 +14,7 @@ type TvShowCardProps = {
 
 const TvShowCard = ({ tvshow }: TvShowCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${tvshow.poster_path}`;
-
+    const { toast } = useToast();
     const [rating, setRating] = useState<number>(0);
 
     const { mutate: rateTvShowData } = useMutation({
@@ -22,7 +22,9 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateTvShow(id, rating),
         onSuccess: () => {
-            toast.success("You have rated successfully.");
+            toast({
+                description: "You have rated the tv show successfully",
+            });
         },
     });
 

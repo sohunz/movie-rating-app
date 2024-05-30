@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateMovie } from "@/utils/query";
-import toast from "react-hot-toast";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
 
 type MovieCardProps = {
     movie: MovieType;
@@ -16,13 +16,16 @@ type MovieCardProps = {
 const MovieCard = ({ movie }: MovieCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const [rating, setRating] = useState<number>(0);
+    const { toast } = useToast();
 
     const { mutate: rateMovieData } = useMutation({
         mutationKey: ["rateMovie"],
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateMovie(id, rating),
         onSuccess: () => {
-            toast.success("You have rated successfully.");
+            toast({
+                description: "You have rated the movie successfully",
+            });
         },
     });
 
