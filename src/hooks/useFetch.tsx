@@ -46,18 +46,18 @@ export const useRatedShow = () => {
 
 // fetch movie detail
 export const useMovieDetail = (id: number) => {
-    const { data: movieDetailData } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["movieDetail"],
         queryFn: () => fetchMovieDetail(id),
     });
-    return movieDetailData;
+    return { data, isError, isLoading };
 };
 
 // fetch tv show detail
 export const useShowDetail = (id: number) => {
-    const { data: showDetailData } = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["showDetail"],
         queryFn: () => fetchShowDetail(id),
     });
-    return showDetailData;
+    return { data, isError, isLoading };
 };
