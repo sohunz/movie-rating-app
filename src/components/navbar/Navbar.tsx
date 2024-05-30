@@ -29,9 +29,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="flex items-center gap-4">
-                        <div>
-                            <ModeToggle />
-                        </div>
+                        <ModeToggle />
                         <div className="flex item-center">
                             {localStorage.getItem("guest_session_id") ? (
                                 <DropdownMenu>

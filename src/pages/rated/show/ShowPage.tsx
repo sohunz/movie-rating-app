@@ -1,14 +1,18 @@
 import { TvShowTypes } from "@/types/types";
 import RatedShowCard from "@/components/rated/RatedShowCard";
 import { useRatedShow } from "@/hooks/useFetch";
-import Loading from "@/components/loader/Loading";
+import CardSketon from "@/components/skeleton/CardSketon";
 
 const ShowPage = () => {
     const { data, isError, isLoading } = useRatedShow();
     if (isLoading) {
         return (
-            <div className="w-full h-[85vh] flex items-center justify-center">
-                <Loading />
+            <div className="mb-8 mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {Array.from({ length: 12 }).map((_, index) => (
+                        <CardSketon key={index} />
+                    ))}
+                </div>
             </div>
         );
     }
