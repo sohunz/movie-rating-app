@@ -36,7 +36,7 @@ const MovieCardDetail = () => {
                             </li>
                             <li>
                                 <strong>Vote Average:</strong>{" "}
-                                {(movie?.vote_average).toFixed(1)}
+                                {movie?.vote_average}
                             </li>
                             <li>
                                 <strong>Total Votes:</strong>{" "}
