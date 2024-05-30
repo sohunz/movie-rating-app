@@ -4,10 +4,10 @@ const MovieDetailSkeleton = () => {
     return (
         <div className="flex items-center justify-center p-4">
             <div className=" rounded overflow-hidden shadow-lg flex flex-col md:flex-row">
-                <Skeleton className="h-[400px] w-[300px] rounded-xl" />
+                <Skeleton className="h-[480px] w-[320px] rounded-xl" />
                 <div className=" p-6 flex flex-col justify-between">
                     <div className="text-left">
-                        <Skeleton className="h-10 w-[500px] " />
+                        <Skeleton className="h-10 w-[650px] " />
 
                         <Skeleton className="text-base mb-4 mt-5 w-full h-24" />
 

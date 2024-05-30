@@ -26,7 +26,7 @@ const TvShowCardDetail = () => {
                 <div className="max-w-5xl rounded overflow-hidden shadow-lg  flex flex-col md:flex-row">
                     <img
                         className="w-full md:w-1/3 object-cover"
-                        src={`https://image.tmdb.org/t/p/w500${data?.backdrop_path}`}
+                        src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
                     />
                     <div className="p-6 flex flex-col justify-between">
                         <div className="text-left">
