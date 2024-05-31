@@ -9,7 +9,7 @@ const MoviePage = () => {
     if (isLoading) {
         return (
             <div className="mb-8 mt-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     {Array.from({ length: 12 }).map((_, index) => (
                         <CardSketon key={index} />
                     ))}
@@ -27,8 +27,8 @@ const MoviePage = () => {
     }
 
     return (
-        <div className="mb-8 mt-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="w-full mb-8 mt-10 mx-auto">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-auto">
                 {data &&
                     data.map((movie: MovieType) => (
                         <MovieCard key={movie.id} movie={movie} />

@@ -7,6 +7,15 @@ import { useMutation } from "@tanstack/react-query";
 import { rateTvShow } from "@/utils/query";
 import { useToast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "../ui/button";
 
 type TvShowCardProps = {
     tvshow: TvShowTypes;
@@ -29,65 +38,91 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
     });
 
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden shadow-lg border">
-            <Link className="relative" to={`/show/${tvshow?.id}`}>
-                <img className="w-full" src={posterUrl} alt={tvshow?.name} />
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
-                    <svg
-                        className="w-12 h-12 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path d="M10 17l6-5-6-5v10z" />
-                    </svg>
-                </div>
-            </Link>
-            <div className="px-4 py-4">
-                <div className="font-semibold text-md mb-2">{tvshow?.name}</div>
-                <div className="flex justify-between items-center mb-2 text-sm text-gray-500">
-                    <div>
-                        <p className="flex  items-center">
-                            <span className="block">
-                                {convertYear(tvshow?.first_air_date)}
-                            </span>
-                            <BsDot />
-                            <span className="block">75mn</span>
-                        </p>
+        <Card className="rounded-[12px] overflow-hidden">
+            <CardHeader>
+                <CardTitle>
+                    <Link to={`/movie/${tvshow?.id}`}>
+                        <div className="relative">
+                            <img
+                                className="w-full h-[270px] object-cover rounded-[7px]"
+                                src={posterUrl}
+                                alt={tvshow?.name}
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
+                                <svg
+                                    className="w-12 h-12 text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M10 17l6-5-6-5v10z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </Link>
+                </CardTitle>
+            </CardHeader>
+            <div className="w-full h-[200px] flex flex-col justify-between">
+                <CardContent className="w-full">
+                    <div className="font-semibold text-lg line-clamp-2">
+                        {tvshow?.name}
                     </div>
-                    <div className="border px-3 py-1 rounded">TV Show</div>
-                </div>
-            </div>
-
-            <div className=" flex items-center justify-between">
-                <div>
-                    <div className="flex flex-row items-center gap-2 px-5 my-2">
-                        <input
-                            type="number"
-                            className="border w-[60px]"
-                            min={0}
-                            max={10}
-                            step={0.5}
-                            onChange={(
-                                e: React.ChangeEvent<HTMLInputElement>
-                            ) => setRating(Number(e.target.value))}
-                        />
-                        <button
-                            className="border rounded-md px-2 py-1"
-                            onClick={() =>
-                                rateTvShowData({ id: tvshow?.id, rating })
-                            }
+                </CardContent>
+                <CardFooter className="w-full flex justify-between flex-col">
+                    <div className="w-full flex flex-row items-center justify-between">
+                        <div>
+                            <p className="flex  items-center">
+                                <span className="block text-sm">
+                                    {convertYear(tvshow?.first_air_date)}
+                                </span>
+                                <BsDot />
+                                <span className="block text-sm">90mn</span>
+                            </p>
+                        </div>
+                        <Badge
+                            variant="outline"
+                            className="py-2 px-2 rounded-md text-sm"
                         >
-                            Rate
-                        </button>
+                            Movie
+                        </Badge>
                     </div>
-                </div>
-                <div>
-                    <Badge variant="outline">
-                        {tvshow.vote_average.toFixed(1)}
-                    </Badge>
-                </div>
+                    <div className="w-full flex flex-row items-center justify-between pt-2">
+                        <div className="w-full">
+                            <div className="w-full flex flex-row items-center gap-2 my-2">
+                                <Input
+                                    type="number"
+                                    className="w-[60px]"
+                                    placeholder="0"
+                                    min={0}
+                                    max={10}
+                                    step={0.5}
+                                    onChange={(
+                                        e: React.ChangeEvent<HTMLInputElement>
+                                    ) => setRating(Number(e.target.value))}
+                                />
+                                <Button
+                                    onClick={() =>
+                                        rateTvShowData({
+                                            id: tvshow?.id,
+                                            rating,
+                                        })
+                                    }
+                                >
+                                    Rate
+                                </Button>
+                            </div>
+                        </div>
+                        <div>
+                            <Badge
+                                variant="outline"
+                                className="bg-blue-500 py-2 text-md rounded-md px-3"
+                            >
+                                {tvshow.vote_average.toFixed(1)}
+                            </Badge>
+                        </div>
+                    </div>
+                </CardFooter>
             </div>
-        </div>
+        </Card>
     );
 };
 

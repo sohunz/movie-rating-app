@@ -6,12 +6,10 @@ import CardSketon from "@/components/skeleton/CardSketon";
 const ShowPage = () => {
     const { data, isError, isLoading } = useTvShows();
 
-    console.log(data);
-
     if (isLoading) {
         return (
             <div className="mb-8 mt-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     {Array.from({ length: 12 }).map((_, index) => (
                         <CardSketon key={index} />
                     ))}
@@ -30,7 +28,7 @@ const ShowPage = () => {
 
     return (
         <div className="mt-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {data &&
                     data.map((tvshow: TvShowTypes) => (
                         <TvShowCard key={tvshow.id} tvshow={tvshow} />
