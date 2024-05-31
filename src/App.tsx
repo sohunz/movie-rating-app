@@ -6,8 +6,12 @@ const App = () => {
     return (
         <div>
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-                <Navbar />
-                <Outlet />
+                <div className="w-full flex justify-center ">
+                    <Navbar />
+                </div>
+                <div className="mt-5 max-w-screen-xl mx-auto">
+                    <Outlet />
+                </div>
             </ThemeProvider>
         </div>
     );
