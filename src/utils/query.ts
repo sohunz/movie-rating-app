@@ -88,37 +88,45 @@ export const fetchTvShows = async (): Promise<TvShowTypes[]> => {
 // rate movie
 
 export const rateMovie = async (id: number, rating: number) => {
-    await axios.post(
-        `https://api.themoviedb.org/3/movie/${id}/rating?api_key=${
-            import.meta.env.VITE_API_KEY
-        }&guest_session_id=${localStorage.getItem("guest_session_id")}`,
-        {
-            value: rating,
-        },
-        {
-            headers: {
-                accept: "application/json",
-                "Content-Type": "application/json;charset=utf-8",
+    try {
+        await axios.post(
+            `https://api.themoviedb.org/3/movie/${id}/rating?api_key=${
+                import.meta.env.VITE_API_KEY
+            }&guest_session_id=${localStorage.getItem("guest_session_id")}`,
+            {
+                value: rating,
             },
-        }
-    );
+            {
+                headers: {
+                    accept: "application/json",
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+            }
+        );
+    } catch (error: any) {
+        console.log(error.message);
+    }
 };
 // rate tv show
 export const rateTvShow = async (id: number, rating: number) => {
-    await axios.post(
-        `https://api.themoviedb.org/3/tv/${id}/rating?guest_session_id=${localStorage.getItem(
-            "guest_session_id"
-        )}&api_key=${import.meta.env.VITE_API_KEY}`,
-        {
-            value: rating,
-        },
-        {
-            headers: {
-                accept: "application/json",
-                "Content-Type": "application/json;charset=utf-8",
+    try {
+        await axios.post(
+            `https://api.themoviedb.org/3/tv/${id}/rating?guest_session_id=${localStorage.getItem(
+                "guest_session_id"
+            )}&api_key=${import.meta.env.VITE_API_KEY}`,
+            {
+                value: rating,
             },
-        }
-    );
+            {
+                headers: {
+                    accept: "application/json",
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+            }
+        );
+    } catch (error: any) {
+        console.log(error.message);
+    }
 };
 
 // fetch rate movie
