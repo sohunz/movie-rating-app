@@ -114,7 +114,7 @@ const TvShowCard = ({ tvshow }: TvShowCardProps) => {
                         <div>
                             <Badge
                                 variant="outline"
-                                className="bg-blue-500 py-2 text-md rounded-md px-3"
+                                className="bg-blue-500 text-white py-2 text-md rounded-md px-3"
                             >
                                 {tvshow.vote_average.toFixed(1)}
                             </Badge>
