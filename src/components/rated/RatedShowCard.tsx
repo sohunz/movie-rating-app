@@ -22,7 +22,7 @@ const RatedShowCard = ({ tvshow }: TvShowCardProps) => {
         <Card className="rounded-[12px] overflow-hidden">
             <CardHeader>
                 <CardTitle>
-                    <Link to={`/movie/${tvshow?.id}`}>
+                    <Link to={`/show/${tvshow?.id}`}>
                         <div className="relative">
                             <img
                                 className="w-full h-[270px] object-cover rounded-[7px]"
