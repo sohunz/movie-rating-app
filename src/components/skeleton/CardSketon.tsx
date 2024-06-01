@@ -1,19 +1,43 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Skeleton } from "../ui/skeleton";
 
 const CardSketon = () => {
     return (
-        <div className="max-w-xs rounded-xl overflow-hidden">
-            <div className="flex flex-col space-y-3">
-                <Skeleton className="h-[400px] w-[320px] rounded-xl" />
-                <div className="space-y-2">
-                    <Skeleton className="h-8 w-[90%] mx-auto text-center" />
-                </div>
+        <Card className="rounded-[12px] overflow-hidden shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
+            <CardHeader>
+                <CardTitle>
+                    <div className="relative">
+                        <Skeleton className="w-full h-[270px] object-cover rounded-[7px]" />
+                    </div>
+                </CardTitle>
+            </CardHeader>
+            <div className="w-full h-[200px] flex flex-col justify-between">
+                <CardContent className="w-full space-y-2">
+                    <Skeleton className="w-full h-5" />
+                    <Skeleton className="w-[85%] h-5" />
+                </CardContent>
+                <CardFooter className="w-full flex justify-between flex-col">
+                    <div className="w-full flex flex-row items-center justify-between">
+                        <Skeleton className="w-[70px] h-8" />
+                        <Skeleton className="w-[70px] h-8" />
+                    </div>
+                    <div className="w-full flex flex-row items-center justify-between pt-2">
+                        <div className="w-full flex flex-row items-center gap-2 my-2">
+                            <Skeleton className="w-[100px] h-10" />
+                        </div>
+                        <div>
+                            <Skeleton className="w-[100px] h-10" />
+                        </div>
+                    </div>
+                </CardFooter>
             </div>
-            <div className="flex flex-row items-center gap-2 px-5 my-5">
-                <Skeleton className="h-14 w-[200px]" />
-                <Skeleton className="h-14 w-[200px]" />
-            </div>
-        </div>
+        </Card>
     );
 };
 
