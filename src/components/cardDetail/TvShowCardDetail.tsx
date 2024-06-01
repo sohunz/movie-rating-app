@@ -21,9 +21,9 @@ const TvShowCardDetail = () => {
     }
 
     return (
-        <div className=" flex items-center justify-center p-4">
+        <div className="  flex items-center justify-center p-4 rounded-xl border  py-10 mb-5 lg:mx-0 md:mx-5 sm:mx-5 mx-5">
             <div className=" flex items-center justify-center p-4">
-                <div className="max-w-5xl rounded overflow-hidden shadow-lg  flex flex-col md:flex-row">
+                <div className="max-w-5xl rounded overflow-hidden  flex flex-col md:flex-row gap-5">
                     <img
                         className="w-full md:w-1/3 object-cover"
                         src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
@@ -34,45 +34,66 @@ const TvShowCardDetail = () => {
                                 {data?.name}
                             </div>
                             <hr />
-                            <p className="text-gray-700 text-base mb-4 mt-5">
+                            <p className="text-md mb-4 mt-5 leading-7 line-clamp-3">
                                 {data?.overview}
                             </p>
-                            <ul className=" text-sm mb-4">
-                                <li>
+                            <ul className=" text-md mb-4 leading-7">
+                                <li className=" space-x-2">
                                     <strong>Release Date: </strong>{" "}
-                                    {data?.first_air_date}
+                                    <span className="text-blue-500 font-semibold">
+                                        {" "}
+                                        {data?.first_air_date}
+                                    </span>
                                 </li>
-                                <li>
-                                    <strong>Vote Average:</strong> {voteAverage}
+                                <li className=" space-x-2">
+                                    <strong>TMDB:</strong>{" "}
+                                    <span className="text-blue-500 font-semibold">
+                                        {voteAverage}
+                                    </span>
                                 </li>
-                                <li>
+                                <li className=" space-x-2">
                                     <strong>Total Votes:</strong>{" "}
-                                    {numberConvert(data?.vote_count)}
+                                    <span className="text-blue-500 font-semibold">
+                                        {numberConvert(data?.vote_count)}
+                                    </span>
                                 </li>
-                                <li>
+                                <li className=" space-x-2">
                                     <strong>Popularity:</strong>{" "}
-                                    {numberConvert(data?.popularity)}
+                                    <span className="text-blue-500 font-semibold">
+                                        {numberConvert(data?.popularity)}
+                                    </span>
                                 </li>
-                                <li>
+                                <li className=" space-x-2">
                                     <strong>Languages:</strong>{" "}
-                                    {getCountryLanguages(
-                                        data?.original_language
-                                    )}
+                                    <span className="text-blue-500 font-semibold">
+                                        {getCountryLanguages(
+                                            data?.original_language
+                                        )}
+                                    </span>
                                 </li>
-                                <li>
+                                <li className=" space-x-2">
                                     <strong>Country: </strong>{" "}
-                                    {getCountryName(data?.origin_country[0])}
+                                    <span className="text-blue-500 font-semibold">
+                                        {getCountryName(
+                                            data?.origin_country[0]
+                                        )}
+                                    </span>
                                 </li>
 
-                                <li>
-                                    <strong>Runtime: </strong> {data?.runtime}
-                                    mn
+                                <li className=" space-x-2">
+                                    <strong>Duration: </strong>
+                                    <span className="text-blue-500 font-semibold">
+                                        N/A
+                                    </span>
                                 </li>
                                 <li>
-                                    <p>
+                                    <p className=" space-x-2">
                                         <strong>Genres: </strong>
                                         {genre?.map((i, index) => (
-                                            <span key={i.id}>
+                                            <span
+                                                key={i.id}
+                                                className="text-blue-500 font-semibold"
+                                            >
                                                 {i.name}
                                                 {index <
                                                     production.length + 1 &&
@@ -81,13 +102,11 @@ const TvShowCardDetail = () => {
                                         ))}
                                     </p>
                                 </li>
-                                <li>
-                                    <p>
-                                        <strong>Productions: </strong>
-                                        {production?.map((i) => (
-                                            <span key={i.id}>{i.name}</span>
-                                        ))}
-                                    </p>
+                                <li className=" space-x-2">
+                                    <strong>Productions: </strong>
+                                    <span className="text-blue-500 font-semibold">
+                                        N/A
+                                    </span>
                                 </li>
                             </ul>
                         </div>

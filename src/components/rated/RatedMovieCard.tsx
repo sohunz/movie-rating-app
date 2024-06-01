@@ -20,7 +20,7 @@ const RatedMovieCard = ({ movie }: MovieCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
     return (
-        <Card className="rounded-[12px] overflow-hidden">
+        <Card className="rounded-[12px] overflow-hidden shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
             <CardHeader>
                 <CardTitle>
                     <Link to={`/movie/${movie?.id}`}>

@@ -38,7 +38,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     });
 
     return (
-        <Card className="rounded-[12px] overflow-hidden">
+        <Card className="rounded-[12px] overflow-hidden shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
             <CardHeader>
                 <CardTitle>
                     <Link to={`/movie/${movie?.id}`}>
@@ -48,7 +48,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                                 src={posterUrl}
                                 alt={movie?.title}
                             />
-                            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
+                            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity rounded-2xl">
                                 <svg
                                     className="w-12 h-12 text-white"
                                     fill="currentColor"

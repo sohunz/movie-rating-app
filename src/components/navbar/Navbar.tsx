@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     return (
-        <Menubar className="w-full flex justify-between max-w-screen-xl mx-auto px-5 sticky z-10">
+        <Menubar className="w-full flex justify-between max-w-screen-xl mx-auto px-5 sticky z-10 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
             <div className="flex items-center gap-5">
                 <MenubarMenu>
                     <Link to="/">

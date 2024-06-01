@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
     return (
-        <div className="container mx-auto">
+        <div className="mb-5 lg:mx-0 md:mx-5 sm:mx-5 mx-5">
             <Tabs defaultValue="movie" className="w-full">
                 <TabsList>
                     <Link to="/movie">
