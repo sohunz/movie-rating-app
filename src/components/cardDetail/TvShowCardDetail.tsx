@@ -5,10 +5,15 @@ import { getCountryLanguages } from "@/utils/languageConvert";
 import { numberConvert } from "@/utils/numberConvert";
 import MovieDetailSkeleton from "../skeleton/MovieDetailSkeleton";
 
+interface GenreTypes {
+    id: number;
+    name: string;
+}
+
 const TvShowCardDetail = () => {
     const { id } = useParams();
 
-    const { data, isError, isLoading } = useShowDetail(Number(id));
+    const { data, isLoading } = useShowDetail(Number(id));
 
     const genre = data?.genres;
 
@@ -89,17 +94,19 @@ const TvShowCardDetail = () => {
                                 <li>
                                     <p className=" space-x-2">
                                         <strong>Genres: </strong>
-                                        {genre?.map((i, index) => (
-                                            <span
-                                                key={i.id}
-                                                className="text-blue-500 font-semibold"
-                                            >
-                                                {i.name}
-                                                {index <
-                                                    production.length + 1 &&
-                                                    ", "}
-                                            </span>
-                                        ))}
+                                        {genre?.map(
+                                            (i: GenreTypes, index: number) => (
+                                                <span
+                                                    key={i.id}
+                                                    className="text-blue-500 font-semibold"
+                                                >
+                                                    {i.name}
+                                                    {index <
+                                                        production.length + 1 &&
+                                                        ", "}
+                                                </span>
+                                            )
+                                        )}
                                     </p>
                                 </li>
                                 <li className=" space-x-2">

@@ -22,7 +22,7 @@ export const fetchMovie = async (): Promise<MovieType[]> => {
         return []; // Return an empty array if an error occurs
     }
 };
-export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
+export const fetchMovieDetail = async (id: number) => {
     try {
         const response = await axios.get(
             `https://api.themoviedb.org/3/movie/${id}`,
@@ -35,14 +35,14 @@ export const fetchMovieDetail = async (id: number): Promise<MovieType[]> => {
             }
         );
 
-        const movieDetailData: MovieType[] = response.data;
+        const movieDetailData = response.data;
         return movieDetailData;
     } catch (error) {
         console.error("Error fetching rated tv show:", error);
         return []; // Return an empty array if an error occurs
     }
 };
-export const fetchShowDetail = async (id: number): Promise<MovieType[]> => {
+export const fetchShowDetail = async (id: number) => {
     try {
         const response = await axios.get(
             `https://api.themoviedb.org/3/tv/${id}`,
@@ -55,7 +55,7 @@ export const fetchShowDetail = async (id: number): Promise<MovieType[]> => {
             }
         );
 
-        const showDetailData: MovieType[] = response.data;
+        const showDetailData = response.data;
         return showDetailData;
     } catch (error) {
         console.error("Error fetching rated tv show:", error);

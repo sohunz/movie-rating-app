@@ -5,10 +5,20 @@ import { numberConvert } from "@/utils/numberConvert";
 import { getCountryLanguages } from "@/utils/languageConvert";
 import MovieDetailSkeleton from "../skeleton/MovieDetailSkeleton";
 
+interface GenreTypes {
+    id: number;
+    name: string;
+}
+
+interface ProductionType {
+    id: number;
+    name: string;
+}
+
 const MovieCardDetail = () => {
     const { id } = useParams();
 
-    const { data, isError, isLoading } = useMovieDetail(Number(id));
+    const { data, isLoading } = useMovieDetail(Number(id));
 
     const genre = data?.genres;
 
@@ -85,21 +95,24 @@ const MovieCardDetail = () => {
                             <li>
                                 <p className=" space-x-2">
                                     <strong>Genres: </strong>
-                                    {genre?.map((i, index) => (
-                                        <span key={i.id}>
-                                            <span className="text-blue-500 font-semibold">
-                                                {i.name}
+                                    {genre?.map(
+                                        (i: GenreTypes, index: number) => (
+                                            <span key={i.id}>
+                                                <span className="text-blue-500 font-semibold">
+                                                    {i.name}
+                                                </span>
+                                                {index <
+                                                    production.length + 1 &&
+                                                    ", "}
                                             </span>
-                                            {index < production.length + 1 &&
-                                                ", "}
-                                        </span>
-                                    ))}
+                                        )
+                                    )}
                                 </p>
                             </li>
                             <li>
                                 <p className=" space-x-2">
                                     <strong>Productions: </strong>
-                                    {production?.map((i) => (
+                                    {production?.map((i: ProductionType) => (
                                         <span
                                             key={i.id}
                                             className="text-blue-500 font-semibold"

@@ -10,9 +10,11 @@ export type MovieType = {
     vote_average: number;
     vote_count: number;
     backdrop_path: string;
-    origin_country: string;
     first_air_date: string;
     rating: number;
+    genres: any;
+    production_companies: string;
+    origin_country: string[];
 };
 
 export type TvShowTypes = {
