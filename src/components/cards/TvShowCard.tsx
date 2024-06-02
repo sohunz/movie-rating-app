@@ -3,7 +3,7 @@ import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { rateTvShow } from "@/utils/query";
 import { useToast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
@@ -21,18 +21,23 @@ type TvShowCardProps = {
     tvshow: TvShowTypes;
 };
 
+queryKey: ["RatedShow"];
+
 const TvShowCard = ({ tvshow }: TvShowCardProps) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${tvshow.poster_path}`;
     const { toast } = useToast();
     const [rating, setRating] = useState<number>(0);
+
+    const queryClient = useQueryClient();
 
     const { mutate: rateTvShowData } = useMutation({
         mutationKey: ["rateTvShow"],
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateTvShow(id, rating),
         onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["RatedShow"] });
             toast({
-                description: "You have rated the tv show successfully",
+                description: "You have rated the movie successfully",
             });
         },
     });

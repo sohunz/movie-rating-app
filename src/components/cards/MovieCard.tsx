@@ -3,7 +3,7 @@ import { BsDot } from "react-icons/bs";
 import { convertYear } from "@/utils/yearConvertor";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { rateMovie } from "@/utils/query";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
@@ -26,11 +26,14 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     const [rating, setRating] = useState<number>(0);
     const { toast } = useToast();
 
+    const queryClient = useQueryClient();
+
     const { mutate: rateMovieData } = useMutation({
         mutationKey: ["rateMovie"],
         mutationFn: ({ id, rating }: { id: number; rating: number }) =>
             rateMovie(id, rating),
         onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["RatedMovie"] });
             toast({
                 description: "You have rated the movie successfully",
             });
