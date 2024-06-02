@@ -72,7 +72,7 @@ const RatedShowCard = ({ tvshow }: TvShowCardProps) => {
                                 variant="outline"
                                 className="bg-blue-500 text-white py-2 text-sm rounded-md px-3"
                             >
-                                You have rated: {tvshow.vote_average.toFixed(1)}
+                                You have rated: {tvshow.rating.toFixed(1)}
                             </Badge>
                         </div>
                     </div>
